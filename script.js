@@ -1,9 +1,8 @@
-document.getElementById('runCodeBtn').addEventListener('click', function() {
-    const code = document.getElementById('codeEditor').value;
-    const previewFrame = document.getElementById('livePreview');
-    const preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
-
-    preview.open();
-    preview.write(code);
-    preview.close();
-});
+function run() {
+  let htmlCode = document.getElementById("html-code").value;
+  let cssCode = document.getElementById("css-code").value;
+  let jsCode = document.getElementById("js-code").value;
+  let output = document.getElementById("output");
+  output.contentDocument.body.innerHTML = `${htmlCode} <style> ${cssCode} </style>`;
+  output.contentWindow.eval(jsCode);
+}
